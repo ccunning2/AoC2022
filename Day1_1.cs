@@ -1,24 +1,25 @@
-﻿internal class Part1_2
+﻿internal class Day1_1
 {
-    private static void Main(string[] args)
+    public static void Run()
     {
         var data = ProblemReader.readString(@"./day1.txt");
 
-        List<Int32> totals = new List<int>();
+        var max = 0;
         var sum = 0;
         foreach (string s in data)
         {
             if (string.IsNullOrWhiteSpace(s))
             {
-                totals.Add(sum);
+                if (sum > max)
+                {
+                    max = sum;
+                }
                 sum = 0;
                 continue;
             }
             var num = int.Parse(s);
             sum += num;
         }
-        totals.Sort();
-        var newSum = totals.GetRange(totals.Count - 3, 3).Sum();
-        Console.WriteLine(newSum);
+        Console.WriteLine(max);
     }
 }
