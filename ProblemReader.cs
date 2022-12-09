@@ -21,4 +21,15 @@ public static class ProblemReader {
         }  
         return listOfInts;
     }
+
+    public static List<List<int>> get2dListOfInts(string file) {
+        List<List<int>> x = new List<List<int>>();
+        foreach(string line in System.IO.File.ReadLines(file))
+        {
+            List<int> y = new List<int>();
+            line.ToList().ForEach(c => y.Add(c - '0'));
+            x.Add(y);
+        }
+        return x;
+    }
 }
